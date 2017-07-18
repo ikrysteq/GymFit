@@ -6,7 +6,6 @@ import { MainPage } from '../../pages/pages';
 import { User } from '../../providers/user';
 import { AngularFireAuth } from 'angularfire2/auth';
 
-
 import { TranslateService } from '@ngx-translate/core';
 
 import { Account } from '../../models/account'

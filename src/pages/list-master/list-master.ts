@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, ModalController } from 'ionic-angular';
+import { AngularFireAuth } from 'angularfire2/auth';
 
 import { ItemCreatePage } from '../item-create/item-create';
 import { ItemDetailPage } from '../item-detail/item-detail';
@@ -15,10 +16,17 @@ import { Item } from '../../models/item';
 export class ListMasterPage {
   currentItems: Item[];
 
-  constructor(public navCtrl: NavController, public items: Items, public modalCtrl: ModalController) {
+  constructor(
+    private AFauth: AngularFireAuth, public navCtrl: NavController, public items: Items, public modalCtrl: ModalController) {
     this.currentItems = this.items.query();
   }
 
+  ionViewWillLoad() {
+    this.AFauth.authState.subscribe(
+      data => {
+        console.log(data);
+      });
+  }
   /**
    * The view loaded, let's query our items for the list
    */
