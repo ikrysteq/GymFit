@@ -5,7 +5,9 @@ import { MainPage } from '../../pages/pages';
 import { User } from '../../providers/user';
 
 import { TranslateService } from '@ngx-translate/core';
+import { AngularFireAuth } from 'angularfire2/auth';
 
+import { Account } from '../../models/account'
 
 @Component({
   selector: 'page-signup',
@@ -19,12 +21,14 @@ export class SignupPage {
     name: 'Test Human',
     email: 'test@example.com',
     password: 'test'
-  };
+  } as Account;
 
   // Our translated text strings
   private signupErrorString: string;
 
-  constructor(public navCtrl: NavController,
+  constructor(
+    private AFauth: AngularFireAuth,
+    public navCtrl: NavController,
     public user: User,
     public toastCtrl: ToastController,
     public translateService: TranslateService) {
@@ -34,21 +38,32 @@ export class SignupPage {
     })
   }
 
-  doSignup() {
-    // Attempt to login in through our User service
-    this.user.signup(this.account).subscribe((resp) => {
-      this.navCtrl.push(MainPage);
-    }, (err) => {
+  // doSignup() {
+  //   // Attempt to login in through our User service
+  //   this.user.signup(this.account).subscribe((resp) => {
+  //     this.navCtrl.push(MainPage);
+  //   }, (err) => {
 
-      this.navCtrl.push(MainPage); // TODO: Remove this when you add your signup endpoint
+  //     this.navCtrl.push(MainPage); // TODO: Remove this when you add your signup endpoint
 
-      // Unable to sign up
-      let toast = this.toastCtrl.create({
-        message: this.signupErrorString,
-        duration: 3000,
-        position: 'top'
-      });
-      toast.present();
-    });
+  //     // Unable to sign up
+  //     let toast = this.toastCtrl.create({
+  //       message: this.signupErrorString,
+  //       duration: 3000,
+  //       position: 'top'
+  //     });
+  //     toast.present();
+  //   });
+  // }
+  async doSignup(account: Account) {
+    try {
+      console.debug("acc:", account);
+      const result = await this.AFauth.auth.createUserWithEmailAndPassword(account.email, account.password);
+      console.log(result);
+    }
+    catch (e) {
+      console.error(e);
+    }
   }
+
 }
