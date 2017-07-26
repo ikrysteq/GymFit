@@ -1,4 +1,6 @@
 {
+  "BACK_BUTTON_TEXT": "Wstecz",
+
   "NAME": "Imię",
   "PASSWORD": "Hasło",
   "EMAIL": "Email",
