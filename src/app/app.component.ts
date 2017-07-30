@@ -17,6 +17,7 @@ import { SignupPage } from '../pages/signup/signup';
 import { TabsPage } from '../pages/tabs/tabs';
 import { TutorialPage } from '../pages/tutorial/tutorial';
 import { WelcomePage } from '../pages/welcome/welcome';
+import { HomePage } from '../pages/home/home';
 
 import { Settings } from '../providers/providers';
 
@@ -31,13 +32,15 @@ export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
   pages: any[] = [
-    { title: 'Tutorial', component: TutorialPage },
     { title: 'Welcome', component: WelcomePage },
+    { title: 'Home', component: HomePage },
+    { title: 'Login', component: LoginPage },
+    { title: 'Signup', component: SignupPage },
+    // fill in below
+    { title: 'Tutorial', component: TutorialPage },
     { title: 'Tabs', component: TabsPage },
     { title: 'Cards', component: CardsPage },
     { title: 'Content', component: ContentPage },
-    { title: 'Login', component: LoginPage },
-    { title: 'Signup', component: SignupPage },
     { title: 'Map', component: MapPage },
     { title: 'Master Detail', component: ListMasterPage },
     { title: 'Menu', component: MenuPage },
