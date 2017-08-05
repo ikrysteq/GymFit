@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, ToastController } from 'ionic-angular';
+import { NavController, ToastController, LoadingController, AlertController } from 'ionic-angular';
 
 import { MainPage } from '../../pages/pages';
 
@@ -24,7 +24,7 @@ export class LoginPage {
   account: Account = {
     name: '',
     email: 'test@example.com',
-    password: 'test'
+    password: '123456'
   };
 
   // Our translated text strings
@@ -35,7 +35,9 @@ export class LoginPage {
     public navCtrl: NavController,
     public user: User,
     public toastCtrl: ToastController,
-    public translateService: TranslateService) {
+    public translateService: TranslateService,
+    public loadingCtrl: LoadingController,
+    private alertCtrl: AlertController) {
 
     this.translateService.get('LOGIN_ERROR').subscribe((value) => {
       this.loginErrorString = value;
@@ -58,16 +60,33 @@ export class LoginPage {
   //   });
   // }
   async doLogin(account: Account) {
+    //create loading spinner
+    let loading = this.loadingCtrl.create({
+      content: 'Please wait...',
+      spinner: 'crescent',
+    });
     try {
+      loading.present();
       const result = await this.AFauth.auth.signInWithEmailAndPassword(account.email, account.password);
       console.log(result);
       if (result) {
+        loading.dismiss();
         this.navCtrl.push(MainPage);
-
       }
     }
     catch (e) {
+      this.presentAlertErrorLoading(e);
+      loading.dismiss();
       console.error(e);
     }
+  }
+
+  presentAlertErrorLoading(error) {
+    let alert = this.alertCtrl.create({
+      title: 'Error',
+      subTitle: error,
+      buttons: ['OK']
+    });
+    alert.present();
   }
 }

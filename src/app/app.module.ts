@@ -17,9 +17,10 @@ import { MenuPage } from '../pages/menu/menu';
 import { SearchPage } from '../pages/search/search';
 import { SettingsPage } from '../pages/settings/settings';
 import { SignupPage } from '../pages/signup/signup';
-import { TabsPage } from '../pages/tabs/tabs';
+// import { TabsPage } from '../pages/tabs/tabs';
 import { TutorialPage } from '../pages/tutorial/tutorial';
 import { WelcomePage } from '../pages/welcome/welcome';
+import { HomePage } from "../pages/home/home";
 
 import { Api } from '../providers/api';
 import { Items } from '../mocks/providers/items';
@@ -68,12 +69,13 @@ export function provideSettings(storage: Storage) {
     ItemDetailPage,
     ListMasterPage,
     LoginPage,
+    HomePage,
     MapPage,
     MenuPage,
     SearchPage,
     SettingsPage,
     SignupPage,
-    TabsPage,
+    // TabsPage,
     TutorialPage,
     WelcomePage
   ],
@@ -101,12 +103,13 @@ export function provideSettings(storage: Storage) {
     ItemDetailPage,
     ListMasterPage,
     LoginPage,
+    HomePage,
     MapPage,
     MenuPage,
     SearchPage,
     SettingsPage,
     SignupPage,
-    TabsPage,
+    // TabsPage,
     TutorialPage,
     WelcomePage
   ],

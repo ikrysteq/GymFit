@@ -14,7 +14,7 @@ import { MenuPage } from '../pages/menu/menu';
 import { SearchPage } from '../pages/search/search';
 import { SettingsPage } from '../pages/settings/settings';
 import { SignupPage } from '../pages/signup/signup';
-import { TabsPage } from '../pages/tabs/tabs';
+// import { TabsPage } from '../pages/tabs/tabs';
 import { TutorialPage } from '../pages/tutorial/tutorial';
 import { WelcomePage } from '../pages/welcome/welcome';
 import { HomePage } from '../pages/home/home';
@@ -38,7 +38,7 @@ export class MyApp {
     { title: 'Signup', component: SignupPage },
     // fill in below
     { title: 'Tutorial', component: TutorialPage },
-    { title: 'Tabs', component: TabsPage },
+    // { title: 'Tabs', component: TabsPage },
     { title: 'Cards', component: CardsPage },
     { title: 'Content', component: ContentPage },
     { title: 'Map', component: MapPage },
